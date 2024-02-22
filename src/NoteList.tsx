@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import { Note, Tag } from "./App";
 import styles from "./NoteList.module.css";
-import { FormEvent, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 type SimplifiedNote = {
   tags: Tag[];
   title: string;
