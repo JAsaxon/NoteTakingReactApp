@@ -9,6 +9,7 @@ import NoteList from "./NoteList";
 import NoteLayout from "./NoteLayout";
 import Note from "./Note";
 import EditNote from "./EditNote.tsx";
+import "./styles.scss";
 export type Note = {
   id: string;
 } & NoteData;

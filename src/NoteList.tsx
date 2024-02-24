@@ -48,7 +48,7 @@ export default function NoteList({
   }, [title, selectedTags, notes]);
   return (
     <>
-      <Row className="align-items-center mb-4">
+      <Row className="align-items-center mb-4" data-bs-theme="dark">
         <Col>
           {" "}
           <h1>Notes</h1>
@@ -59,6 +59,7 @@ export default function NoteList({
               <Button variant="primary"> Create</Button>
             </Link>
             <Button
+              data-bs-theme="dark"
               variant="outline-secondary"
               onClick={() => setModalActive(true)}
             >
@@ -83,6 +84,7 @@ export default function NoteList({
                 <Form.Label>Tags</Form.Label>
                 <ReactSelect
                   isMulti
+                  className="dark-mode-react-select"
                   options={availableTags.map((tag) => {
                     return { label: tag.label, value: tag.id };
                   })}
@@ -102,7 +104,7 @@ export default function NoteList({
           </Row>
         </Form>
       </Row>
-      <Row xs={1} sm={2} lg={3} xl={4} className="g-3">
+      <Row xs={1} sm={1} lg={3} xl={4} className="g-3">
         {filteredNotes.map((note) => {
           return (
             <Col key={note.id}>
@@ -126,18 +128,15 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
     <Card
       as={Link}
       to={`/${id}`}
-      className={`h-100 text-reset text-decoration-none ${styles.card}`}
+      className={`h-100 text-reset text-decoration-none ${styles.card} card`}
     >
       <Card.Body>
-        <Stack
-          gap={2}
-          className="align-items-center justify-content-center h-100"
-        >
-          <span className="fs-5">{title}</span>
+        <Stack gap={2} className="align-items-center h-100">
+          <span className="title">{title}</span>
           {tags.length > 0 && (
-            <Stack gap={1} direction="horizontal">
+            <Stack gap={1} direction="horizontal" className="tag-section">
               {tags.map((tag) => (
-                <Badge className="text-truncate" key={tag.id}>
+                <Badge className="badge" key={tag.id}>
                   {tag.label}
                 </Badge>
               ))}
@@ -167,7 +166,7 @@ function EditTagsModal({
     onEditTag(id, e.target.value);
   }
   return (
-    <Modal show={active} onHide={handleClosed}>
+    <Modal show={active} onHide={handleClosed} data-bs-theme="dark">
       <Modal.Header closeButton>
         <Modal.Title>Edit Tags</Modal.Title>
       </Modal.Header>

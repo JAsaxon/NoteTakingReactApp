@@ -38,7 +38,7 @@ export default function NoteForm({
     navigate("..");
   }
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} data-bs-theme="dark">
       <Stack gap={4}>
         <Row>
           <Col>
@@ -55,6 +55,7 @@ export default function NoteForm({
             <Form.Group controlId="tags">
               <Form.Label>Tags</Form.Label>
               <CreatableReactSelect
+                className="dark-mode-react-select"
                 isMulti
                 onCreateOption={(label) => {
                   const newTag = { id: uuidV4(), label };
